@@ -1,0 +1,29 @@
+name: Run Unit Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    paths: vite-project/** # Runs actions only if files in vite-project are changed
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+
+      - name: Install deps
+      - run: |
+          cd vite-project
+          npm ci
+
+      - name: Run tests
+      - run: |
+          cd vite-project 
+          npm test
