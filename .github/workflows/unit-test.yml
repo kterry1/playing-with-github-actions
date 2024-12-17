@@ -13,17 +13,17 @@ jobs:
 
     steps:
       - name: Checkout code
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
 
       - name: Setup Node
         uses: actions/setup-node@v3
 
       - name: Install deps
-      - run: |
+        run: |
           cd vite-project
           npm ci
 
       - name: Run tests
-      - run: |
+        run: |
           cd vite-project 
           npm test
