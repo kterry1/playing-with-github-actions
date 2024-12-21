@@ -1,0 +1,3 @@
+message: "Small PR"
+color: "green"
+when: "$additions < 10 || $deletions < 10"
