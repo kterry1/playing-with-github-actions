@@ -5,4 +5,7 @@ describe("Testing", () => {
   it("checks that 1 equals 1", () => {
     expect(1).toBe(1);
   });
+  it("checks that 2 doesn't equal 3", () => {
+    expect(2).not.toBe(3);
+  });
 });

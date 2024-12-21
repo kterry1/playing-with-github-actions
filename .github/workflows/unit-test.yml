@@ -8,22 +8,42 @@ on:
     paths: vite-project/** # Runs actions only if files in vite-project are changed
 
 jobs:
-  build-and-test:
+  unit-test:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
 
       - name: Setup Node
         uses: actions/setup-node@v3
 
       - name: Install deps
-      - run: |
+        run: |
           cd vite-project
           npm ci
 
       - name: Run tests
-      - run: |
+        run: |
           cd vite-project 
           npm test
+
+  build:
+    runs-on: ubuntu-latest
+    needs: unit-test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+
+      - name: Install deps
+        run: |
+          cd vite-project
+          npm ci
+
+      - name: Run build
+        run: |
+          cd vite-project
+          npm run build
